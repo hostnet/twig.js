@@ -2,6 +2,3 @@ bin/plovr
 phpunit.xml
 config.php
 vendor/
-.buildpath
-.project
-.settings/*

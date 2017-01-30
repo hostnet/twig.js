@@ -18,6 +18,13 @@ class DefinedCompiler implements TypeCompilerInterface
             throw new \RuntimeException(sprintf('$node must be an instanceof of \Twig_Node_Expression_Test_Defined, but got "%s".', get_class($node)));
         }
 
-        $compiler->subcompile(new \Twig_Node_Expression_Test($node->getNode('node'), $node->getAttribute('name'), $node->getNode('arguments'), $node->getLine()));
+        $compiler->subcompile(
+            new \Twig_Node_Expression_Test(
+                $node->getNode('node'),
+                $node->getAttribute('name'),
+                $node->hasNode('arguments') ? $node->getNode('arguments') : null,
+                $node->getLine()
+            )
+        );
     }
 }

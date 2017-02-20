@@ -34,7 +34,7 @@ class BlockReferenceCompiler implements TypeCompilerInterface
             throw new \RuntimeException(sprintf('$node must be an instanceof of \Twig_Node_Expression_BlockReference, but got "%s".', get_class($node)));
         }
 
-        if ($node->getAttribute('as_string')) {
+        if ($node->hasAttribute('as_string') && $node->getAttribute('as_string')) {
             $compiler->raw('"" + ');
         }
 

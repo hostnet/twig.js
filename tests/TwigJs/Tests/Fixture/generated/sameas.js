@@ -6,17 +6,12 @@
  * @suppress {checkTypes|fileoverviewTags}
  */
 
-goog.provide('sameas');
-
-goog.require('twig');
-goog.require('twig.filter');
-
 /**
  * @constructor
  * @param {twig.Environment} env
  * @extends {twig.Template}
  */
-sameas = function(env) {
+var sameas = function(env) {
     twig.Template.call(this, env);
 };
 twig.inherits(sameas, twig.Template);
@@ -35,7 +30,7 @@ sameas.prototype.render_ = function(sb, context, blocks) {
     // line 1
     sb.append("This is a simple template.<br \/><br \/>\n\n");
     // line 3
-    if ((!(("name" in context ? context["name"] : null) === false))) {
+    if ((!(twig.attrsimple(context, "name") === false))) {
         // line 4
         sb.append("Hello not false!\n");
     }

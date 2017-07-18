@@ -6,17 +6,12 @@
  * @suppress {checkTypes|fileoverviewTags}
  */
 
-goog.provide('simple_standalone');
-
-goog.require('twig');
-goog.require('twig.filter');
-
 /**
  * @constructor
  * @param {twig.Environment} env
  * @extends {twig.Template}
  */
-simple_standalone = function(env) {
+var simple_standalone = function(env) {
     twig.Template.call(this, env);
 };
 twig.inherits(simple_standalone, twig.Template);
@@ -35,10 +30,10 @@ simple_standalone.prototype.render_ = function(sb, context, blocks) {
     // line 1
     sb.append("This is a simple template.<br \/><br \/>\n\n");
     // line 3
-    if (("name" in context)) {
+    if ((("getName" in context) || ("name" in context))) {
         // line 4
         sb.append("Hello ");
-        sb.append(twig.filter.escape(this.env_, twig.filter.capitalize(this.env_, ("name" in context ? context["name"] : null)), "html", null, true));
+        sb.append(twig.filter.escape(this.env_, twig.filter.capitalize(this.env_, twig.attrsimple(context, "name")), "html", null, true));
         sb.append("!\n");
     } else {
         // line 6

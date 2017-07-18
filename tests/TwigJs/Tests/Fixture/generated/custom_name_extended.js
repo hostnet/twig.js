@@ -6,17 +6,12 @@
  * @suppress {checkTypes|fileoverviewTags}
  */
 
-goog.provide('bar');
-
-goog.require('twig');
-goog.require('twig.filter');
-
 /**
  * @constructor
  * @param {twig.Environment} env
  * @extends {twig.Template}
  */
-bar = function(env) {
+var bar = function(env) {
     twig.Template.call(this, env);
 };
 twig.inherits(bar, twig.Template);
